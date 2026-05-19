@@ -79,7 +79,7 @@ const Navbar = () => {
                   : 'text-neutral-600 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-700/40'
               }`}
             >
-              Manage My Facilities
+              Manage Facilities
             </Link>
           </div>
 
