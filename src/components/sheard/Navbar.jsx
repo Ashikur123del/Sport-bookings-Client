@@ -18,8 +18,7 @@ const Navbar = () => {
     <nav className="bg-white dark:bg-neutral-900 border-b border-neutral-200 dark:border-neutral-800 sticky top-0 z-50 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          
-          {/* ১. লোগো সেকশন */}
+        
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center gap-3 group">
               <Image 
@@ -31,8 +30,6 @@ const Navbar = () => {
               />
             </Link>
           </div>
-
-          {/* ২. ডেক্সটপ মেনু লিংক (ব্রেকপয়েন্ট xl করায় মাঝারি স্ক্রিনেও ভাঙবে না) */}
           <div className="hidden xl:flex items-center space-x-1.5">
             <Link 
               href="/" 
@@ -45,9 +42,9 @@ const Navbar = () => {
               Home
             </Link>
             <Link 
-              href="/facilities" 
+              href="/all-facilities" 
               className={`font-semibold text-sm transition-colors px-3 py-2 rounded-xl ${
-                isActive('/facilities') 
+                isActive('/all-facilities') 
                   ? 'text-emerald-500 dark:text-emerald-400 bg-emerald-50/50 dark:bg-emerald-950/20' 
                   : 'text-neutral-600 dark:text-neutral-300 hover:text-emerald-500'
               }`}
@@ -86,7 +83,6 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* ৩. ডেক্সটপ রাইট সাইড (বাটন ও প্রোফাইল হোভার ড্রপডাউন) */}
           <div className="hidden xl:flex items-center gap-4">
             
             <div className="flex items-center gap-2">
@@ -143,8 +139,6 @@ const Navbar = () => {
             </div>
 
           </div>
-
-          {/* ৪. মোবাইল এবং ট্যাবলেট স্ক্রিনের জন্য হ্যামবার্গার/টগল বাটন */}
           <div className="xl:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -157,7 +151,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* ৫. রেসপন্সিভ মোবাইল ও ট্যাবলেট ড্রপডাউন মেনু */}
       {isOpen && (
         <div className="xl:hidden border-t border-neutral-100 dark:border-neutral-800/60 bg-white dark:bg-neutral-900 px-4 pt-3 pb-6 space-y-1.5 shadow-xl">
           <Link 
@@ -179,7 +172,6 @@ const Navbar = () => {
             All Facilities
           </Link>
 
-          {/* ড্যাশবোর্ড আইটেম বার (মোবাইলে সরাসরি দেখা যাবে) */}
           <div className="pt-2 border-t border-neutral-100 dark:border-neutral-800/60 mt-2 space-y-1.5">
             <div className="px-4 py-1 text-xs font-bold uppercase tracking-wider text-neutral-400">
               Dashboard
@@ -216,7 +208,6 @@ const Navbar = () => {
             </button>
           </div>
 
-          {/* লগইন ও রেজিস্টার বাটন */}
           <div className="pt-4 border-t border-neutral-100 dark:border-neutral-800/60 mt-3 flex flex-col gap-2 px-2">
             <Link href="/login" onClick={() => setIsOpen(false)} className="w-full text-center font-bold py-3 rounded-xl border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-200">
               Login

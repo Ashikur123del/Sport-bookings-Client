@@ -1,21 +1,20 @@
-"use client"; 
+"use client";
 
 import React from "react";
 import { Card } from "@heroui/react";
-import { motion } from "framer-motion"; 
+import { motion } from "framer-motion";
 import { IoMdFootball } from "react-icons/io";
 import { GiTennisRacket } from "react-icons/gi";
 import { FaPersonSwimming, FaBasketball } from "react-icons/fa6";
 import { MdSportsCricket } from "react-icons/md";
 import { GiShuttlecock } from "react-icons/gi";
 
-
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1, 
+      staggerChildren: 0.1,
     },
   },
 };
@@ -116,7 +115,7 @@ const PopularSports = () => {
               className="h-full"
             >
               <Card
-                isPressable
+                ispressable="true"
                 shadow="sm"
                 className={`border border-transparent hover:border-gray-100 transition-colors duration-300 w-full h-full ${sport.bgColor}`}
               >
