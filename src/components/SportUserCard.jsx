@@ -28,7 +28,7 @@ const SportUserCard = ({ user }) => {
         />
 
         <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-md text-gray-800 text-[11px] font-bold px-2.5 py-1 rounded-full shadow-sm border border-gray-100">
-          🔥 {booking_count} Booked
+           {booking_count} Booked
         </div>
       </div>
 
@@ -47,8 +47,8 @@ const SportUserCard = ({ user }) => {
           </h3>
 
           <div className="flex items-center justify-between text-xs text-gray-500 mb-4 font-medium">
-            <span className="truncate max-w-[150px]">📍 {location.split(',')[0]}</span>
-            <span>👥 Max {capacity} Players</span>
+            <span className="truncate max-w-[150px]"> {location.split(',')[0]}</span>
+            <span> Max {capacity} Players</span>
           </div>
         </div>
 
@@ -62,7 +62,7 @@ const SportUserCard = ({ user }) => {
           <div className="text-right">
             <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Slots Available</p>
             <p className="text-xs font-bold text-blue-600 mt-0.5">
-              🟢 {available_slots?.length || 0} Slots today
+               {available_slots?.length || 0} Slots today
             </p>
           </div>
         </div>

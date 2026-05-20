@@ -19,10 +19,10 @@ const DeleteModel = ({ facility, onSuccess }) => {
       });
 
       if (res.ok) {
-        toast.success("Facility deleted successfully! 🗑️");
-        if (onSuccess) onSuccess(); // ডিলিট হওয়ার পর লিস্ট রিফ্রেশ করবে
+        toast.success("Facility deleted successfully! ");
+        if (onSuccess) onSuccess(); 
       } else {
-        toast.error("Something went wrong while deleting! ⚠️");
+        toast.error("Something went wrong while deleting!");
       }
     } catch (error) {
       console.error("Delete error:", error);

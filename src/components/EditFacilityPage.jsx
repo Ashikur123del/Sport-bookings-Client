@@ -5,17 +5,16 @@ import { toast } from 'react-toastify'
 import { useRouter } from 'next/navigation'
 
 const EditFacilityPage = ({ params }) => {
-  // Next.js 15+ এর জন্য params আনর‍্যাপ করা
+ 
   const { id } = use(params);
   const router = useRouter();
 
-  // ফর্মের স্টেটসমূহ
+
   const [facility, setFacility] = useState(null);
   const [slots, setSlots] = useState([]);
   const [currentSlot, setCurrentSlot] = useState('');
   const [loading, setLoading] = useState(true);
 
-  // ১. পুরনো ডাটা লোড করার ফাংশন
   useEffect(() => {
     const fetchSingleFacility = async () => {
       try {
@@ -37,12 +36,11 @@ const EditFacilityPage = ({ params }) => {
     fetchSingleFacility();
   }, [id]);
 
-  // স্লট অ্যাড ও রিমুভ হ্যান্ডেলার
   const handleAddSlot = (e) => {
     e.preventDefault();
     if (!currentSlot.trim()) return;
     if (slots.includes(currentSlot.trim())) {
-      toast.error("This slot is already added! 🕒");
+      toast.error("This slot is already added!");
       return;
     }
     setSlots([...slots, currentSlot.trim()]);
@@ -53,12 +51,12 @@ const EditFacilityPage = ({ params }) => {
     setSlots(slots.filter(slot => slot !== slotToRemove));
   };
 
-  // ২. ফর্ম সাবমিট করে আপডেট করার ফাংশn (PUT API Call)
+
   const handleUpdateForm = async (e) => {
     e.preventDefault();
 
     if (slots.length === 0) {
-      toast.error("Please add at least one available time slot! 🕒");
+      toast.error("Please add at least one available time slot! ");
       return;
     }
 
@@ -86,8 +84,8 @@ const EditFacilityPage = ({ params }) => {
       });
 
       if (res.ok) {
-        toast.success("🎉 Facility Updated Successfully!");
-        router.push("/manage-facilities"); // আপডেট শেষে মেইন লিস্ট পেজে ফেরত যাবে
+        toast.success("Facility Updated Successfully!");
+        router.push("/manage-facilities");
         router.refresh();
       } else {
         toast.error("Failed to update facility.");
@@ -109,7 +107,6 @@ const EditFacilityPage = ({ params }) => {
         <form onSubmit={handleUpdateForm} className="p-6 sm:p-10 space-y-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             
-            {/* Facility Name */}
             <div className="md:col-span-2">
               <TextField isRequired aria-label="Facility Name" defaultValue={facility.name}>
                 <Label className="text-sm font-semibold text-gray-700 mb-1 block">Facility Name</Label>
@@ -118,7 +115,6 @@ const EditFacilityPage = ({ params }) => {
               </TextField>
             </div>
 
-            {/* Facility Type */}
             <div>
               <Select
                 name="facilityType"
@@ -145,28 +141,24 @@ const EditFacilityPage = ({ params }) => {
               </Select>
             </div>
 
-            {/* Location */}
             <TextField isRequired aria-label="Location" defaultValue={facility.location}>
               <Label className="text-sm font-semibold text-gray-700 mb-1 block">📍 Location</Label>
               <Input name="location" placeholder="Dhaka, Bangladesh" className="rounded-2xl" />
               <FieldError className="text-xs text-red-500 mt-1" />
             </TextField>
 
-            {/* Price Per Hour */}
             <TextField isRequired aria-label="Price Per Hour" defaultValue={String(facility.price_per_hour)}>
               <Label className="text-sm font-semibold text-gray-700 mb-1 block">💰 Price Per Hour (BDT)</Label>
               <Input name="pricePerHour" type="number" placeholder="2000" className="rounded-2xl" />
               <FieldError className="text-xs text-red-500 mt-1" />
             </TextField>
 
-            {/* Capacity */}
             <TextField isRequired aria-label="Capacity" defaultValue={String(facility.capacity)}>
               <Label className="text-sm font-semibold text-gray-700 mb-1 block">👥 Max Capacity (Players)</Label>
               <Input name="facilityCapacity" type="number" placeholder="12" className="rounded-2xl" />
               <FieldError className="text-xs text-red-500 mt-1" />
             </TextField>
 
-            {/* Image URL */}
             <div className="md:col-span-2">
               <TextField isRequired aria-label="Image URL" defaultValue={facility.image}>
                 <Label className="text-sm font-semibold text-gray-700 mb-1 block">📸 Uploaded Image URL</Label>
@@ -175,7 +167,6 @@ const EditFacilityPage = ({ params }) => {
               </TextField>
             </div>
 
-            {/* Available Time Slots */}
             <div className="md:col-span-2 space-y-3">
               <Label className="text-sm font-semibold text-gray-700 block">🕒 Edit Available Time Slots</Label>
               <div className="flex gap-3 items-end">
@@ -198,7 +189,7 @@ const EditFacilityPage = ({ params }) => {
                 </button>
               </div>
 
-              {/* স্লট লিস্ট চিপস */}
+    
               {slots.length > 0 && (
                 <div className="flex flex-wrap gap-2 p-3 bg-gray-50 border border-gray-100 rounded-2xl">
                   {slots.map((slot, index) => (
@@ -211,7 +202,7 @@ const EditFacilityPage = ({ params }) => {
               )}
             </div>
 
-            {/* Description */}
+  
             <div className="md:col-span-2">
               <TextField isRequired aria-label="Description" defaultValue={facility.description}>
                 <Label className="text-sm font-semibold text-gray-700 mb-1 block">Description</Label>
@@ -221,7 +212,7 @@ const EditFacilityPage = ({ params }) => {
             </div>
           </div>
 
-          {/* Submit Button */}
+      
           <Button
             type="submit"
             className="rounded-xl w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 text-sm tracking-wide shadow-md transition-all border-none"

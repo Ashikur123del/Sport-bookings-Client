@@ -12,7 +12,6 @@ const ManageFacilitiesPage = () => {
   const [facilities, setFacilities] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // ডাটা নিয়ে আসার ফাংশন
   const fetchFacilities = async () => {
     try {
       const res = await fetch("http://localhost:8000/sport-user");
@@ -20,7 +19,7 @@ const ManageFacilitiesPage = () => {
         const data = await res.json();
         setFacilities(data);
       } else {
-        toast.error("Failed to load facilities! ❌");
+        toast.error("Failed to load facilities! ");
       }
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -46,7 +45,7 @@ const ManageFacilitiesPage = () => {
 
   return (
     <div className="max-w-6xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
-      {/* হেডার */}
+    
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
         <div>
           <h2 className="text-3xl font-bold text-gray-900 tracking-tight">
@@ -67,7 +66,7 @@ const ManageFacilitiesPage = () => {
       {facilities.length === 0 ? (
         <div className="text-center py-20 bg-gray-50 rounded-3xl border border-dashed border-gray-200">
           <p className="text-gray-500 font-medium">
-            No facilities found. Click "Add New" to create one!
+            No facilities found. Click Add New to create one!
           </p>
         </div>
       ) : (
@@ -77,7 +76,7 @@ const ManageFacilitiesPage = () => {
               key={item._id}
               className="bg-white border border-gray-100 rounded-3xl p-4 sm:p-5 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4 transition-all hover:shadow-md"
             >
-              {/* বাম পাশ - ইমেজ এবং তথ্য */}
+
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 w-full md:w-auto">
                 <div className="relative h-24 w-full sm:w-24 rounded-2xl overflow-hidden bg-gray-100 shrink-0">
                   <Image
@@ -120,14 +119,12 @@ const ManageFacilitiesPage = () => {
                 </div>
               </div>
 
-              {/* ডান পাশ - মডেল বাটনসমূহ */}
               <div className="flex items-center gap-3 w-full md:w-auto justify-end border-t border-gray-50 pt-3 md:pt-0 md:border-none">
-                {/* এডিট মডেল (এখানে facility ডাটা পাস করা হয়েছে) */}
+  
                 <div>
                   <EditModle facility={item} onSuccess={fetchFacilities} />
                 </div>
                 
-                {/* ডিলিট মডেল (এখানে facility ডাটা পাস করা হয়েছে) */}
                 <div>
                   <DeleteModel facility={item} onSuccess={fetchFacilities} />
                 </div>

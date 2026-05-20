@@ -6,7 +6,7 @@ import { FaEdit } from "react-icons/fa";
 import { HiClock } from "react-icons/hi2";
 
 const EditModle = ({ facility, onSuccess }) => {
-  // যদি ওপর থেকে কোনো ডাটা না আসে তবে কম্পোনেন্ট রেন্ডার হবে না
+
   if (!facility) return null;
 
   const { _id, name, facility_type, price_per_hour, capacity, image, description, location } = facility;
@@ -16,8 +16,6 @@ const EditModle = ({ facility, onSuccess }) => {
 
     const formData = new FormData(e.currentTarget);
     const rawData = Object.fromEntries(formData.entries());
-
-    // আপনার ব্যাকএন্ড স্কিমা অনুযায়ী অবজেক্ট রেডি করা হলো
     const updatedFacilityData = {
       name: rawData.facilityName,
       facility_type: rawData.facilityType,
@@ -30,7 +28,7 @@ const EditModle = ({ facility, onSuccess }) => {
 
     try {
       const res = await fetch(`http://localhost:8000/sport-user/${_id}`, {
-        method: "PUT",
+        method: "PATCH",
         headers: {
           "Content-Type": "application/json",
         },
@@ -38,8 +36,8 @@ const EditModle = ({ facility, onSuccess }) => {
       });
 
       if (res.ok) {
-        toast.success("Facility Updated Successfully! 🎉");
-        if (onSuccess) onSuccess(); // লিস্ট রিফ্রেশ করবে
+        toast.success("Facility Updated Successfully! ");
+        if (onSuccess) onSuccess(); 
       } else {
         toast.error("Failed to update facility!");
       }
@@ -71,7 +69,6 @@ const EditModle = ({ facility, onSuccess }) => {
                       <h3 className="text-lg font-bold text-gray-800">Edit Court Details</h3>
                       
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                        {/* Facility Name */}
                         <div className="md:col-span-2">
                           <TextField defaultValue={name} name="facilityName" isRequired>
                             <Label className="text-xs font-semibold mb-1 block">Facility Name</Label>
@@ -79,8 +76,6 @@ const EditModle = ({ facility, onSuccess }) => {
                             <FieldError className="text-xs text-red-500" />
                           </TextField>
                         </div>
-
-                        {/* Facility Type */}
                         <div>
                           <Select
                             defaultValue={facility_type}
@@ -106,30 +101,22 @@ const EditModle = ({ facility, onSuccess }) => {
                             </Select.Popover>
                           </Select>
                         </div>
-
-                        {/* Location */}
                         <TextField defaultValue={location} name="location" isRequired>
                           <Label className="text-xs font-semibold mb-1 block">Location</Label>
                           <Input placeholder="Dhaka" className="rounded-2xl" />
                           <FieldError className="text-xs text-red-500" />
                         </TextField>
-
-                        {/* Price */}
                         <TextField defaultValue={String(price_per_hour)} name="pricePerHour" type="number" isRequired>
                           <Label className="text-xs font-semibold mb-1 block">Price Per Hour (BDT)</Label>
                           <Input type="number" placeholder="2000" className="rounded-2xl" />
                           <FieldError className="text-xs text-red-500" />
                         </TextField>
-
-                        {/* Capacity */}
                         <TextField defaultValue={String(capacity)} name="facilityCapacity" type="number" isRequired>
                           <Label className="text-xs font-semibold mb-1 block">Capacity (Players)</Label>
                           <Input type="number" placeholder="12" className="rounded-2xl" />
                           <FieldError className="text-xs text-red-500" />
                         </TextField>
-
-                        {/* Image URL */}
-                        <div className="md:col-span-2">
+                       <div className="md:col-span-2">
                           <TextField defaultValue={image} name="imageUrl" isRequired>
                             <Label className="text-xs font-semibold mb-1 block">Image URL</Label>
                             <Input type="url" placeholder="https://..." className="rounded-2xl" />
@@ -137,7 +124,6 @@ const EditModle = ({ facility, onSuccess }) => {
                           </TextField>
                         </div>
 
-                        {/* Description */}
                         <div className="md:col-span-2">
                           <TextField defaultValue={description} name="description" isRequired>
                             <Label className="text-xs font-semibold mb-1 block">Description</Label>

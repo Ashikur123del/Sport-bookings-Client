@@ -11,6 +11,11 @@ import {
   Card,
 } from "@heroui/react";
 import React, { useState } from "react";
+import { FaLocationDot } from "react-icons/fa6";
+import { ImManWoman } from "react-icons/im";
+import { IoCamera } from "react-icons/io5";
+import { LuAlarmClock } from "react-icons/lu";
+import { TbCoinTakaFilled } from "react-icons/tb";
 import { toast } from "react-toastify";
 
 const AddFacilityPage = () => {
@@ -67,7 +72,7 @@ const AddFacilityPage = () => {
       if (res.ok) {
         const data = await res.json();
         console.log("Server Response:", data);
-        toast.success("🎉 Facility Added Successfully!");
+        toast.success(" Facility Added Successfully!");
         e.target.reset();
         setSlots([]);
       } else {
@@ -148,8 +153,8 @@ const AddFacilityPage = () => {
             </div>
 
             <TextField isRequired aria-label="Location">
-              <Label className="text-sm font-semibold text-gray-700 mb-1 block">
-                📍 Location
+              <Label className="text-sm font-semibold text-gray-700 mb-1 flex items-center gap-1 ">
+                <span className="text-orange-400"><FaLocationDot /></span> Location
               </Label>
               <Input
                 name="location"
@@ -160,8 +165,8 @@ const AddFacilityPage = () => {
             </TextField>
 
             <TextField isRequired aria-label="Price Per Hour">
-              <Label className="text-sm font-semibold text-gray-700 mb-1 block">
-                💰 Price Per Hour (BDT)
+              <Label className="text-sm font-semibold text-gray-700 mb-1 flex items-center gap-1">
+                <span className="text-orange-400"><TbCoinTakaFilled />   </span> Price Per Hour (BDT) 
               </Label>
               <Input
                 name="pricePerHour"
@@ -173,8 +178,8 @@ const AddFacilityPage = () => {
             </TextField>
 
             <TextField isRequired aria-label="Capacity">
-              <Label className="text-sm font-semibold text-gray-700 mb-1 block">
-                👥 Max Capacity (Players)
+              <Label className="text-sm font-semibold text-gray-700 mb-1 flex items-center gap-1">
+                <span className="text-orange-400"><ImManWoman /> </span>  Max Capacity (Players) 
               </Label>
               <Input
                 name="facilityCapacity"
@@ -187,8 +192,8 @@ const AddFacilityPage = () => {
 
             <div className="md:col-span-2">
               <TextField isRequired aria-label="Image URL">
-                <Label className="text-sm font-semibold text-gray-700 mb-1 block">
-                  📸 Uploaded Image URL
+                <Label className="text-sm font-semibold text-gray-700 mb-1 flex items-center gap-1">
+                  <span className="text-orange-400"><IoCamera /> </span> Uploaded Image URL 
                 </Label>
                 <Input
                   name="imageUrl"
@@ -201,8 +206,8 @@ const AddFacilityPage = () => {
             </div>
 
             <div className="md:col-span-2 space-y-3">
-              <Label className="text-sm font-semibold text-gray-700 block">
-                🕒 Create Available Time Slots
+              <Label className="text-sm font-semibold text-gray-700 flex items-center gap-1">
+                 <span className="text-orange-400"><LuAlarmClock /> </span> Create Available Time Slots
               </Label>
               <div className="flex gap-3 items-end">
                 <div className="flex-1">

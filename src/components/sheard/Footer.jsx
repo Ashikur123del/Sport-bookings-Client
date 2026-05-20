@@ -1,19 +1,19 @@
-'use client'; // Next.js App Router-এর জন্য জরুরি
+'use client'; 
 
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
 import { IoLocationSharp } from 'react-icons/io5';
+import Link from 'next/link';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
-  // সোশ্যাল মিডিয়া লিংক ডেটা
   const socialLinks = [
-    { id: 1, icon: <FaFacebookF />, url: '#', color: 'hover:bg-blue-600' },
+    { id: 1, icon: <FaFacebookF />, url: 'https://www.facebook.com/asik.kan.560', color: 'hover:bg-blue-600' },
     { id: 2, icon: <FaTwitter />, url: '#', color: 'hover:bg-sky-400' },
     { id: 3, icon: <FaInstagram />, url: '#', color: 'hover:bg-pink-600' },
-    { id: 4, icon: <FaLinkedinIn />, url: '#', color: 'hover:bg-blue-700' },
+    { id: 4, icon: <FaLinkedinIn />, url: 'https://www.linkedin.com/in/asik-khan-b82390249/', color: 'hover:bg-blue-700' },
   ];
 
   return (
@@ -101,7 +101,7 @@ const Footer = () => {
         <div className="border-t border-gray-800/80 pt-8 mt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-medium text-gray-500">
           <p>© {currentYear} SportZon. All rights reserved.</p>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-gray-400 transition-colors">Privacy Policy</a>
+            <Link href="https://www.facebook.com/asik.kan.560" className="hover:text-gray-400 transition-colors">Privacy Policy</Link>
             <a href="#" className="hover:text-gray-400 transition-colors">Terms of Service</a>
             <a href="#" className="hover:text-gray-400 transition-colors">Cookie Policy</a>
           </div>
