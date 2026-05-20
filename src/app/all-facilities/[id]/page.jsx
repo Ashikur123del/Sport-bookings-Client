@@ -9,7 +9,7 @@ const SportDetailsPage = async ({ params }) => {
  
   const { id } = await params; 
   
-  const serverUrl = process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:8000";
+  const serverUrl = process.env.NEXT_PUBLIC_SERVER_URL;
 
   const nextHeaders = await headers();
   const { token } = await auth.api.getToken({

@@ -61,7 +61,7 @@ const AddFacilityPage = () => {
     };
 
     try {
-      const res = await fetch("http://localhost:8000/sport-user", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/sport-user`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

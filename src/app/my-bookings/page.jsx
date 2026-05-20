@@ -33,7 +33,7 @@ const MyBookingsPage = () => {
 
     const fetchMyBookings = async () => {
       try {
-        const serverUrl = process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:8000";
+        const serverUrl = process.env.NEXT_PUBLIC_SERVER_URL;
         
         const { data: tokenData } = await authClient.token(); 
   

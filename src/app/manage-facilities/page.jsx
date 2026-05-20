@@ -14,7 +14,7 @@ const ManageFacilitiesPage = () => {
 
   const fetchFacilities = async () => {
     try {
-      const res = await fetch("http://localhost:8000/sport-user");
+      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/sport-user`);
       if (res.ok) {
         const data = await res.json();
         setFacilities(data);

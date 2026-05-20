@@ -18,7 +18,7 @@ const EditFacilityPage = ({ params }) => {
   useEffect(() => {
     const fetchSingleFacility = async () => {
       try {
-        const res = await fetch(`http://localhost:8000/sport-user/${id}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/sport-user/${id}`);
         if (res.ok) {
           const data = await res.json();
           setFacility(data);
@@ -75,7 +75,7 @@ const EditFacilityPage = ({ params }) => {
     };
 
     try {
-      const res = await fetch(`http://localhost:8000/sport-user/${id}`, {
+      const res = await fetch(`${NEXT_PUBLIC_SERVER_URL}/sport-user/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json"
