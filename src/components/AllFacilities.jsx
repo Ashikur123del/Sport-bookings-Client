@@ -17,14 +17,17 @@ const AllFacilities = ({ sport }) => {
     booking_count
   } = sport;
 
-  // ইমেজ না থাকলে সেফটি হিসেবে এটি কাজ করবে
+
+  const safeId = _id ? _id.toString() : '';
+
   const fallbackImage = "https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0";
 
+  if (!safeId) return null;
+
   return (
-    <Link href={`/all-facilities/${_id}`} className="block h-full">
+    <Link href={`/all-facilities/${safeId}`} className="block h-full">
       <div className="group bg-white rounded-2xl shadow-sm hover:shadow-xl border border-gray-100 transition-all duration-300 flex flex-col justify-between overflow-hidden h-full transform hover:-translate-y-1 cursor-pointer">
         
-        {/* ইমেজ সেকশন ও বুকড কাউন্ট ব্যাজ */}
         <div className="relative h-48 w-full overflow-hidden bg-gray-100">
           <Image
             className="object-cover group-hover:scale-105 transition-transform duration-500" 
@@ -38,8 +41,6 @@ const AllFacilities = ({ sport }) => {
              {booking_count || 0} Booked
           </div>
         </div>
-
-        {/* টেক্সট ও কন্টেন্ট ইনফো */}
         <div className="p-5 flex-1 flex flex-col justify-between">
           <div>
             <div className="flex items-center gap-2 mb-2">
@@ -60,7 +61,6 @@ const AllFacilities = ({ sport }) => {
             </p>
           </div>
 
-          {/* রেট এবং ক্যাপাসিটি স্লট ইনফো */}
           <div className="pt-3 border-t border-gray-50 flex items-center justify-between">
             <div>
               <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Rate</p>
@@ -72,13 +72,12 @@ const AllFacilities = ({ sport }) => {
             <div className="text-right">
               <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Capacity & Slots</p>
               <p className="text-xs font-semibold text-gray-700 mt-0.5">
-                Max {capacity || 0}  {available_slots?.length || 0} Slots
+                Max {capacity || 0}   {available_slots?.length || 0} Slots
               </p>
             </div>
           </div>
         </div>
 
-        {/* বটম বোতাম সিমুলেশন */}
         <div className="p-5 pt-0">
           <div className="w-full bg-gray-900 group-hover:bg-blue-600 text-white font-semibold py-2.5 rounded-xl transition-all duration-200 shadow-sm text-center text-xs tracking-wide uppercase">
             View Details & Book
