@@ -8,7 +8,6 @@ import { headers } from 'next/headers';
 const SportDetailsPage = async ({ params }) => {
  
   const { id } = await params; 
-  
   const serverUrl = process.env.NEXT_PUBLIC_SERVER_URL;
   let data = null;
 
@@ -32,11 +31,9 @@ const SportDetailsPage = async ({ params }) => {
       console.error(`Fetch failed with status: ${res.status}`);
     }
   } catch (error) {
-    
     console.error(" Error fetching sports details:", error.message);
   }
 
- d
   if (!data) {
     return notFound();
   }
@@ -105,7 +102,6 @@ const SportDetailsPage = async ({ params }) => {
               </p>
             </div>
           </div>
-
 
           <ConfirmBooking data={data}/>
 
